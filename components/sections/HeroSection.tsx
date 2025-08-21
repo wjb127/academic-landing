@@ -79,25 +79,26 @@ const HeroSection = () => {
         >
           {/* Subtitle */}
           <motion.div
-            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-8"
+            className="inline-flex flex-col sm:flex-row items-center gap-2 bg-white/10 backdrop-blur-md px-3 sm:px-4 py-2 rounded-full mb-6 sm:mb-8 mx-2"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-green-400 font-semibold">2025년 제1기 모집</span>
-            <span className="text-white">|</span>
-            <span className="text-white">부산일보 · 비온미디어 · 쟁글 공동주관</span>
+            <span className="text-green-400 font-semibold text-sm sm:text-base">2025년 제1기 모집</span>
+            <span className="hidden sm:inline text-white">|</span>
+            <span className="text-white text-xs sm:text-base">부산일보 · 비온미디어 · 쟁글 공동주관</span>
           </motion.div>
 
           {/* Main Title */}
           <motion.h1
-            className="text-5xl md:text-7xl font-bold text-white mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            부산 디지털금융·블록체인
-            <br />
+            <span className="block sm:inline">부산 디지털금융·</span>
+            <span className="block sm:inline">블록체인</span>
+            <br className="hidden sm:block" />
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
               아카데미 제1기
             </span>
@@ -106,51 +107,51 @@ const HeroSection = () => {
 
           {/* Key Info Cards */}
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8 sm:mb-12 max-w-3xl mx-auto px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6 }}
           >
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 flex items-center gap-3">
-              <Calendar className="text-green-400" size={24} />
+            <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 sm:p-4 flex items-center gap-3">
+              <Calendar className="text-green-400 flex-shrink-0" size={20} />
               <div className="text-left">
-                <p className="text-white/70 text-sm">교육기간</p>
-                <p className="text-white font-semibold">9.16 - 12.9</p>
+                <p className="text-white/70 text-xs sm:text-sm">교육기간</p>
+                <p className="text-white font-semibold text-sm sm:text-base">9.16 - 12.9</p>
               </div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 flex items-center gap-3">
-              <Users className="text-blue-400" size={24} />
+            <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 sm:p-4 flex items-center gap-3">
+              <Users className="text-blue-400 flex-shrink-0" size={20} />
               <div className="text-left">
-                <p className="text-white/70 text-sm">모집인원</p>
-                <p className="text-white font-semibold">50명 내외</p>
+                <p className="text-white/70 text-xs sm:text-sm">모집인원</p>
+                <p className="text-white font-semibold text-sm sm:text-base">50명 내외</p>
               </div>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 flex items-center gap-3">
-              <MapPin className="text-yellow-400" size={24} />
+            <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 sm:p-4 flex items-center gap-3">
+              <MapPin className="text-yellow-400 flex-shrink-0" size={20} />
               <div className="text-left">
-                <p className="text-white/70 text-sm">교육장소</p>
-                <p className="text-white font-semibold">부산 그랜드볼룸</p>
+                <p className="text-white/70 text-xs sm:text-sm">교육장소</p>
+                <p className="text-white font-semibold text-sm sm:text-base">부산 그랜드볼룸</p>
               </div>
             </div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
             <button
               onClick={handleDownload}
-              className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+              className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-xl"
             >
-              <Download size={20} />
+              <Download size={18} />
               지금 지원하기
             </button>
             <a
               href="#about"
-              className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all transform hover:scale-105"
+              className="bg-white/10 backdrop-blur-md text-white border-2 border-white/30 px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-white/20 transition-all transform hover:scale-105 text-center"
             >
               자세히 알아보기
             </a>

@@ -42,8 +42,9 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <h1 className={`text-xl font-bold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              부산 디지털금융·블록체인 아카데미
+            <h1 className={`font-bold ${isScrolled ? 'text-gray-900' : 'text-white'} text-sm sm:text-base md:text-xl`}>
+              <span className="hidden sm:inline">부산 디지털금융·블록체인 아카데미</span>
+              <span className="sm:hidden">부산 디지털금융 아카데미</span>
             </h1>
           </div>
 
@@ -88,27 +89,33 @@ const Navigation = () => {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <motion.div
-          className="md:hidden bg-white shadow-lg"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="md:hidden bg-white/98 backdrop-blur-lg shadow-xl border-t border-gray-100"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="px-2 pt-2 pb-3 space-y-1">
+          <div className="px-4 pt-4 pb-6 space-y-2">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-md"
+                className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <button 
-              onClick={handleDownload}
-              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all mt-4">
-              지금 지원하기
-            </button>
+            <div className="pt-4 border-t border-gray-200">
+              <button 
+                onClick={() => {
+                  handleDownload();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg">
+                지금 지원하기
+              </button>
+            </div>
           </div>
         </motion.div>
       )}

@@ -43,10 +43,10 @@ const ApplicationSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             지원 방법
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             입학원서를 다운로드하여 작성 후 제출해주세요
           </p>
         </motion.div>
@@ -60,26 +60,26 @@ const ApplicationSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+              <span className="bg-blue-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm">1</span>
               제출 서류
             </h3>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {documents.map((doc, index) => (
                 <motion.div
                   key={doc.title}
-                  className="bg-gray-50 rounded-lg p-4 flex items-start gap-4"
+                  className="bg-gray-50 rounded-lg p-3 sm:p-4 flex items-start gap-3 sm:gap-4"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className="bg-blue-100 p-2 rounded-lg">
-                    <doc.icon className="text-blue-600" size={24} />
+                  <div className="bg-blue-100 p-1.5 sm:p-2 rounded-lg">
+                    <doc.icon className="text-blue-600" size={20} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">{doc.title}</h4>
-                    <p className="text-gray-600 text-sm">{doc.description}</p>
+                    <h4 className="font-semibold text-gray-900 text-sm sm:text-base">{doc.title}</h4>
+                    <p className="text-gray-600 text-xs sm:text-sm">{doc.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -96,12 +96,12 @@ const ApplicationSection = () => {
           >
             <button
               onClick={handleDownload}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 shadow-lg"
             >
-              <Download size={24} />
+              <Download size={20} />
               지금 지원하기
             </button>
-            <p className="text-sm text-gray-500 mt-2">클릭하여 입학원서를 다운로드하세요</p>
+            <p className="text-xs sm:text-sm text-gray-500 mt-2">클릭하여 입학원서를 다운로드하세요</p>
           </motion.div>
 
           {/* Step 2: 접수 방법 */}
@@ -112,28 +112,28 @@ const ApplicationSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-              <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+              <span className="bg-blue-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm">2</span>
               접수 방법
             </h3>
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {applicationMethods.map((method, index) => (
                 <motion.div
                   key={method.title}
-                  className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6"
+                  className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 sm:p-6"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <div className="flex items-start gap-4">
-                    <div className="bg-white p-3 rounded-lg shadow-sm">
-                      <method.icon className="text-blue-600" size={24} />
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm">
+                      <method.icon className="text-blue-600" size={20} />
                     </div>
                     <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 mb-2">{method.title}</h4>
-                      <p className="text-blue-600 font-medium mb-1">{method.content}</p>
-                      <p className="text-sm text-gray-600">{method.description}</p>
+                      <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">{method.title}</h4>
+                      <p className="text-blue-600 font-medium mb-1 text-sm sm:text-base">{method.content}</p>
+                      <p className="text-xs sm:text-sm text-gray-600">{method.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -143,31 +143,31 @@ const ApplicationSection = () => {
 
           {/* Contact Information */}
           <motion.div
-            className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-white text-center"
+            className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 sm:p-8 text-white text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold mb-6">문의처</h3>
-            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-              <div className="flex items-center gap-3">
-                <Phone className="text-white/80" size={24} />
+            <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">문의처</h3>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Phone className="text-white/80 flex-shrink-0" size={20} />
                 <div className="text-left">
-                  <p className="text-white/80 text-sm">전화</p>
-                  <p className="text-xl font-semibold">051-461-4513, 4273</p>
+                  <p className="text-white/80 text-xs sm:text-sm">전화</p>
+                  <p className="text-base sm:text-lg md:text-xl font-semibold">051-461-4513, 4273</p>
                 </div>
               </div>
-              <div className="hidden md:block w-px h-12 bg-white/30" />
-              <div className="flex items-center gap-3">
-                <Mail className="text-white/80" size={24} />
+              <div className="hidden sm:block w-px h-10 sm:h-12 bg-white/30" />
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Mail className="text-white/80 flex-shrink-0" size={20} />
                 <div className="text-left">
-                  <p className="text-white/80 text-sm">이메일</p>
-                  <p className="text-xl font-semibold">jswon@busan.com</p>
+                  <p className="text-white/80 text-xs sm:text-sm">이메일</p>
+                  <p className="text-base sm:text-lg md:text-xl font-semibold">jswon@busan.com</p>
                 </div>
               </div>
             </div>
-            <p className="text-white/90 mt-6 text-lg">부산일보 전략기획부</p>
+            <p className="text-white/90 mt-4 sm:mt-6 text-base sm:text-lg">부산일보 전략기획부</p>
           </motion.div>
 
           {/* Important Notice */}

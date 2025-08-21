@@ -163,16 +163,16 @@ const CurriculumSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             커리큘럼 안내
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             국내외 최고 전문가들과 함께하는 12주 집중 과정
           </p>
         </motion.div>
 
         {/* Main Content Container */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
           {/* Left Side - Week Selector */}
           <motion.div
             className="lg:col-span-1"
@@ -181,25 +181,25 @@ const CurriculumSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white rounded-xl shadow-lg p-4 sticky top-24">
-              <h3 className="font-semibold text-gray-900 mb-1 px-2">강의 일정</h3>
-              <p className="text-xs text-gray-500 mb-4 px-2">클릭하여 상세 내용 보기</p>
+            <div className="bg-white rounded-xl shadow-lg p-3 sm:p-4 lg:sticky lg:top-24">
+              <h3 className="font-semibold text-gray-900 mb-1 px-2 text-sm sm:text-base">강의 일정</h3>
+              <p className="text-xs text-gray-500 mb-3 sm:mb-4 px-2">클릭하여 상세 내용 보기</p>
 
               <div className="space-y-1">
                 {curriculum.map((item, index) => (
                   <button
                     key={index}
                     onClick={() => handleWeekSelect(index)}
-                    className={`group w-full text-left px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer border ${
+                    className={`group w-full text-left px-2 sm:px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer border ${
                       selectedWeek === index
-                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md border-transparent translate-x-1'
-                        : 'border-gray-200 hover:border-blue-400 hover:bg-gray-50 hover:translate-x-1 hover:border-l-4'
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md border-transparent lg:translate-x-1'
+                        : 'border-gray-200 hover:border-blue-400 hover:bg-gray-50 lg:hover:translate-x-1 hover:border-l-4'
                     }`}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex-1 mr-2">
-                        <div className="flex items-baseline gap-2 mb-1">
-                          <span className="font-medium text-sm">
+                      <div className="flex-1 mr-1 sm:mr-2">
+                        <div className="flex items-baseline gap-1 sm:gap-2 mb-1">
+                          <span className="font-medium text-xs sm:text-sm">
                             {item.week}
                           </span>
                           <span className={`text-xs ${
@@ -242,29 +242,29 @@ const CurriculumSection = () => {
               transition={{ duration: 0.3 }}
             >
               {/* Header */}
-              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-3">
-                    <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white font-semibold">
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-2 gap-2">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <span className="bg-white/20 backdrop-blur px-2 sm:px-3 py-1 rounded-full text-white font-semibold text-sm">
                       {currentCurriculum.week}
                     </span>
-                    <span className="text-white/90">
+                    <span className="text-white/90 text-sm sm:text-base">
                       {currentCurriculum.date}
                     </span>
                   </div>
                   {currentCurriculum.isOrientation && (
-                    <span className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
+                    <span className="bg-yellow-400 text-gray-900 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                       오리엔테이션
                     </span>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                   {currentCurriculum.title}
                 </h3>
               </div>
 
               {/* Content */}
-              <div className="p-8">
+              <div className="p-4 sm:p-6 md:p-8">
                 {/* Speaker Profile */}
                 {/* 2명의 강사가 있는 경우 (1주차) */}
                 {currentCurriculum.speakerImage2 ? (
@@ -361,9 +361,9 @@ const CurriculumSection = () => {
                 )}
 
                 {/* Description */}
-                <div className="bg-gray-50 rounded-lg p-6">
-                  <h5 className="font-semibold text-gray-900 mb-3">강의 소개</h5>
-                  <p className="text-gray-700 leading-relaxed">
+                <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
+                  <h5 className="font-semibold text-gray-900 mb-2 sm:mb-3 text-sm sm:text-base">강의 소개</h5>
+                  <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
                     {currentCurriculum.description}
                   </p>
                 </div>

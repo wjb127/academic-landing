@@ -23,37 +23,37 @@ const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             아카데미 소개
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto px-4 sm:px-0">
             부산일보 · 비온미디어 · 쟁글이 공동으로 주관하는
-            <br />
-            디지털금융과 블록체인 전문가 양성 프로그램
+            <br className="hidden sm:block" />
+            <span className="block sm:inline">디지털금융과 블록체인 전문가 양성 프로그램</span>
           </p>
         </motion.div>
 
         {/* Partners Logos */}
         <motion.div
-          className="flex flex-wrap justify-center items-center gap-8 mb-16"
+          className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 mb-12 sm:mb-16 px-4 sm:px-0"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-2xl font-bold text-blue-600">부산일보</div>
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">부산일보</div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-2xl font-bold text-green-600">비온미디어</div>
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">비온미디어</div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-2xl font-bold text-purple-600">쟁글</div>
+          <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
+            <div className="text-lg sm:text-xl md:text-2xl font-bold text-purple-600">쟁글</div>
           </div>
         </motion.div>
 
         {/* Key Information Grid */}
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-16 px-4 sm:px-0">
           {/* Left Column - Program Overview */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -61,22 +61,22 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">프로그램 개요</h3>
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <h4 className="font-semibold text-gray-900 mb-2">모집 인원</h4>
-                <p className="text-3xl font-bold text-blue-600">50명 내외</p>
-                <p className="text-gray-600 mt-1">선착순 마감</p>
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">프로그램 개요</h3>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md">
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">모집 인원</h4>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-600">50명 내외</p>
+                <p className="text-gray-600 mt-1 text-sm">선착순 마감</p>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <h4 className="font-semibold text-gray-900 mb-2">교육 기간</h4>
-                <p className="text-xl font-bold text-gray-900">2025년 9월 16일 ~ 12월 9일</p>
-                <p className="text-gray-600 mt-1">매주 화요일 18:00 - 21:00 (만찬 포함)</p>
+              <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md">
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">교육 기간</h4>
+                <p className="text-base sm:text-xl font-bold text-gray-900">2025년 9월 16일 ~ 12월 9일</p>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">매주 화요일 18:00 - 21:00 (만찬 포함)</p>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <h4 className="font-semibold text-gray-900 mb-2">수강료</h4>
-                <p className="text-2xl font-bold text-gray-900">550만원</p>
-                <p className="text-gray-600 mt-1">(부가세 포함, 원우회비 별도)</p>
+              <div className="bg-white rounded-lg p-4 sm:p-6 shadow-md">
+                <h4 className="font-semibold text-gray-900 mb-2 text-sm sm:text-base">수강료</h4>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900">550만원</p>
+                <p className="text-gray-600 mt-1 text-xs sm:text-sm">(부가세 포함, 원우회비 별도)</p>
               </div>
             </div>
           </motion.div>
@@ -88,8 +88,8 @@ const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">지원 자격</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">지원 자격</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {requirements.map((req, index) => (
                 <motion.div
                   key={req.title}
