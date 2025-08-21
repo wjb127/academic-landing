@@ -22,8 +22,8 @@ const HeroSection = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('/hero-background.png')" }}
         />
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-indigo-900/80" />
+        {/* Gradient Overlay - 더 연한 색상으로 조정 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/50 via-blue-800/40 to-indigo-900/50" />
         
         {/* Animated blockchain network effect */}
         <div className="absolute inset-0">
