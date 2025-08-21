@@ -1,99 +1,159 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Calendar, Clock, User, BookOpen } from 'lucide-react'
-import { useState } from 'react'
+import { Calendar, Clock, User, BookOpen, MapPin, Building2, ChevronRight } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 const CurriculumSection = () => {
+  const [selectedWeek, setSelectedWeek] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
   const curriculum = [
     {
       week: '1주차',
       date: '9/16',
-      speaker: '비온미디어 심준식 대표<br/>(오리엔테이션)<br/>부산디지털자산거래소<br/>김상민 대표',
+      speakerName: '심준식 대표 / 김상민 대표',
+      speakerTitle: '비온미디어 / 부산디지털자산거래소',
+      speakerImage: '/speakers/speaker-1.png',
+      speakerImage2: '/speakers/speaker-placeholder.jpg', // 김상민 대표 사진 (추후 업데이트)
       title: '대한민국 제1경제도시, 부산의 디지털금융 허브 전략',
-      badge: '오키드룸'
+      location: '오키드룸',
+      isOrientation: true,
+      description: '부산의 디지털금융 중심지 전략과 블록체인 산업 육성 방안에 대해 논의합니다.'
     },
     {
       week: '2주차',
       date: '9/24',
-      speaker: '쟁글 김준우 대표',
+      speakerName: '김준우 대표',
+      speakerTitle: '쟁글',
+      speakerImage: '/speakers/speaker-2.png',
       title: 'Web3 산업의 글로벌 트렌드와 패러다임 변화',
-      badge: '오키드룸'
+      location: '오키드룸',
+      description: 'Web3 기술의 최신 동향과 미래 전망을 살펴봅니다.'
     },
     {
       week: '3주차',
       date: '9/30',
-      speaker: '터틀캠퍼스 아이언 김 대표',
+      speakerName: '아이언 킴 대표',
+      speakerTitle: '터틀캠퍼스',
+      speakerImage: '/speakers/speaker-3.jpg',
       title: '디지털 자산 투자와 리스크 관리',
-      badge: '오키드룸'
+      location: '오키드룸',
+      description: '디지털 자산 투자 전략과 효과적인 리스크 관리 방법을 학습합니다.'
     },
     {
       week: '4주차',
       date: '10/14',
-      speaker: 'Hack VC Advisor<br/>Jake Choi',
-      title: '극복형 Web3 VC 투자와 검토',
-      badge: '소연회장 2개룸'
+      speakerName: 'Jake Choi',
+      speakerTitle: 'Hack VC Advisor',
+      speakerImage: '/speakers/speaker-4.jpg',
+      title: '글로벌 Web3 VC 투자와 검토',
+      location: '소연회장 2개룸',
+      description: '글로벌 VC 관점에서의 Web3 프로젝트 평가 기준을 알아봅니다.'
     },
     {
       week: '5주차',
       date: '10/21',
-      speaker: '쟁글 이현욱 대표',
+      speakerName: '이현우 대표',
+      speakerTitle: '쟁글',
+      speakerImage: '/speakers/speaker-5.jpeg',
       title: 'Web3와 AI 발전 방향과 잠재 투자섹터',
-      badge: '소연회장 2개룸'
+      location: '소연회장 2개룸',
+      description: 'Web3와 AI 기술의 융합과 새로운 투자 기회를 탐색합니다.'
     },
     {
       week: '6주차',
       date: '10/28',
-      speaker: '유튜버/작가 강환국',
+      speakerName: '강환국',
+      speakerTitle: '유튜버/작가',
+      speakerImage: '/speakers/speaker-placeholder.jpg',
       title: '코인 분석, 시장 사이클과 투자 심리학',
-      badge: '피오니룸'
+      location: '피오니룸',
+      description: '암호화폐 시장의 사이클과 투자자 심리를 분석합니다.'
     },
     {
       week: '7주차',
       date: '11/4',
-      speaker: 'KAIA 이윤호 CBO',
+      speakerName: '이윤호 CBO',
+      speakerTitle: 'KAIA',
+      speakerImage: '/speakers/speaker-7.jpg',
       title: '아시아 특화 글로벌 블록체인 사업과 원화스테이블코인 사업',
-      badge: '오키드룸'
+      location: '오키드룸',
+      description: '아시아 블록체인 시장과 스테이블코인 비즈니스 전략을 다룹니다.'
     },
     {
       week: '8주차',
       date: '11/11',
-      speaker: '도이치모터스<br/>차탄자 본부장',
+      speakerName: '차란차 본부장',
+      speakerTitle: '도이치모터스',
+      speakerImage: '/speakers/speaker-8.jpg',
       title: 'Web3와 AI를 활용한 모빌리티테크 사업확장',
-      badge: '오키드룸'
+      location: '오키드룸',
+      description: '모빌리티 산업에서의 Web3와 AI 활용 사례를 살펴봅니다.'
     },
     {
       week: '9주차',
       date: '11/18',
-      speaker: '쟁글 이현욱 대표',
+      speakerName: '이현우 대표',
+      speakerTitle: '쟁글',
+      speakerImage: '/speakers/speaker-5.jpeg',
       title: '글로벌 국가별/산업별 선두기업들의 Web3 도입 전략과 현황',
-      badge: '오키드룸'
+      location: '오키드룸',
+      description: '선진 기업들의 Web3 도입 사례와 전략을 분석합니다.'
     },
     {
       week: '10주차',
       date: '11/25',
-      speaker: '고려대학교 이종희 교수',
+      speakerName: '이중희 교수',
+      speakerTitle: '고려대학교',
+      speakerImage: '/speakers/speaker-10.png',
       title: '블록체인 기술의 원리와 산업 적용',
-      badge: '소연회장 2개룸'
+      location: '소연회장 2개룸',
+      description: '블록체인 기술의 핵심 원리와 실제 산업 적용 방안을 학습합니다.'
     },
     {
       week: '11주차',
       date: '12/2',
-      speaker: '뱅가우 안재현 대표',
+      speakerName: '안재현 대표',
+      speakerTitle: '뱅카우',
+      speakerImage: '/speakers/speaker-placeholder.jpg',
       title: '토큰증권, 블록체인과 전통산업의 융합',
-      badge: '소연회장 2개룸'
+      location: '소연회장 2개룸',
+      description: '토큰증권과 전통 금융의 융합 가능성을 탐구합니다.'
     },
     {
       week: '12주차',
       date: '12/9',
-      speaker: 'ATU 파트너스<br/>박정무 대표',
+      speakerName: '박정무 대표',
+      speakerTitle: 'ATU 파트너스',
+      speakerImage: '/speakers/speaker-12.jpg',
       title: '스타트업 투자 발굴과 성공전략',
-      badge: '소연회장 2개룸'
+      location: '소연회장 2개룸',
+      description: '블록체인 스타트업 투자 전략과 성공 사례를 공유합니다.'
     }
   ]
 
+  // 자동 재생 기능
+  useEffect(() => {
+    if (!isAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setSelectedWeek((prev) => (prev + 1) % curriculum.length)
+    }, 8000) // 8초마다 자동 전환
+
+    return () => clearInterval(interval)
+  }, [isAutoPlaying, curriculum.length])
+
+  const handleWeekSelect = (index: number) => {
+    setSelectedWeek(index)
+    setIsAutoPlaying(false) // 수동 선택 시 자동 재생 중지
+  }
+
+  const currentCurriculum = curriculum[selectedWeek]
+
   return (
-    <section id="curriculum" className="py-20 bg-white">
+    <section id="curriculum" className="py-20 bg-gradient-to-b from-white to-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -107,98 +167,209 @@ const CurriculumSection = () => {
             커리큘럼 안내
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            부산 디지털금융·블록체인 아카데미 강의 커리큘럼
+            국내외 최고 전문가들과 함께하는 12주 집중 과정
           </p>
         </motion.div>
 
-        {/* Curriculum Table - Desktop */}
-        <motion.div
-          className="hidden lg:block overflow-hidden rounded-xl shadow-2xl border border-gray-200"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-gradient-to-r from-blue-900 to-indigo-900">
-                <tr>
-                  <th className="px-6 py-4 text-left text-white font-semibold">일정</th>
-                  <th className="px-6 py-4 text-left text-white font-semibold">강사</th>
-                  <th className="px-6 py-4 text-left text-white font-semibold">주요 내용</th>
-                  <th className="px-6 py-4 text-center text-white font-semibold">비고</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {curriculum.map((item, index) => (
-                  <motion.tr
-                    key={index}
-                    className="hover:bg-gray-50 transition-colors"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                  >
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-gray-900">{item.week}</span>
-                        <span className="text-sm text-gray-600">{item.date}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div 
-                        className="text-sm text-gray-900"
-                        dangerouslySetInnerHTML={{ __html: item.speaker }}
-                      />
-                    </td>
-                    <td className="px-6 py-4">
-                      <p className="text-sm text-gray-900 font-medium">{item.title}</p>
-                    </td>
-                    <td className="px-6 py-4 text-center">
-                      <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                        {item.badge}
-                      </span>
-                    </td>
-                  </motion.tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </motion.div>
+        {/* Main Content Container */}
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Side - Week Selector */}
+          <motion.div
+            className="lg:col-span-1"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="bg-white rounded-xl shadow-lg p-4 sticky top-24">
+              <h3 className="font-semibold text-gray-900 mb-1 px-2">강의 일정</h3>
+              <p className="text-xs text-gray-500 mb-4 px-2">클릭하여 상세 내용 보기</p>
 
-        {/* Curriculum Cards - Mobile */}
-        <div className="lg:hidden space-y-4">
-          {curriculum.map((item, index) => (
-            <motion.div
-              key={index}
-              className="bg-white rounded-lg shadow-md border border-gray-200 p-6"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    {item.week}
-                  </div>
-                  <span className="text-gray-600 text-sm">{item.date}</span>
-                </div>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                  {item.badge}
-                </span>
+              <div className="space-y-1">
+                {curriculum.map((item, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleWeekSelect(index)}
+                    className={`group w-full text-left px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer border ${
+                      selectedWeek === index
+                        ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md border-transparent translate-x-1'
+                        : 'border-gray-200 hover:border-blue-400 hover:bg-gray-50 hover:translate-x-1 hover:border-l-4'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1 mr-2">
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="font-medium text-sm">
+                            {item.week}
+                          </span>
+                          <span className={`text-xs ${
+                            selectedWeek === index ? 'text-white/80' : 'text-gray-500'
+                          }`}>
+                            {item.date}
+                          </span>
+                        </div>
+                        <div className={`text-xs line-clamp-2 ${
+                          selectedWeek === index ? 'text-white/90' : 'text-gray-600'
+                        }`}>
+                          {item.title}
+                        </div>
+                      </div>
+                      <ChevronRight className={`flex-shrink-0 transition-all ${
+                        selectedWeek === index 
+                          ? 'text-white opacity-100' 
+                          : 'text-gray-300 opacity-50 group-hover:opacity-100 group-hover:text-blue-500'
+                      }`} size={16} />
+                    </div>
+                  </button>
+                ))}
               </div>
-              
-              <h3 className="text-lg font-semibold text-gray-900 mb-3">
-                {item.title}
-              </h3>
-              
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <User size={16} />
-                <div dangerouslySetInnerHTML={{ __html: item.speaker.replace(/<br\/>/g, ' ') }} />
+            </div>
+          </motion.div>
+
+          {/* Right Side - Detailed Content */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              key={selectedWeek}
+              className="bg-white rounded-2xl shadow-xl overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Header */}
+              <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-white font-semibold">
+                      {currentCurriculum.week}
+                    </span>
+                    <span className="text-white/90">
+                      {currentCurriculum.date}
+                    </span>
+                  </div>
+                  {currentCurriculum.isOrientation && (
+                    <span className="bg-yellow-400 text-gray-900 px-3 py-1 rounded-full text-sm font-medium">
+                      오리엔테이션
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-2xl font-bold text-white">
+                  {currentCurriculum.title}
+                </h3>
+              </div>
+
+              {/* Content */}
+              <div className="p-8">
+                {/* Speaker Profile */}
+                {/* 2명의 강사가 있는 경우 (1주차) */}
+                {currentCurriculum.speakerImage2 ? (
+                  <div className="space-y-4 mb-8">
+                    {/* 첫 번째 강사 */}
+                    <div className="flex items-start gap-4">
+                      <div className="relative w-26 h-26 rounded-full overflow-hidden bg-gray-200 flex-shrink-0" style={{ width: '104px', height: '104px' }}>
+                        {currentCurriculum.speakerImage === '/speakers/speaker-placeholder.jpg' ? (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <User className="text-gray-400" size={42} />
+                          </div>
+                        ) : (
+                          <Image
+                            src={currentCurriculum.speakerImage}
+                            alt={currentCurriculum.speakerName.split(' / ')[0]}
+                            fill
+                            className="object-contain"
+                            style={{ objectPosition: 'center' }}
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-gray-900">
+                          {currentCurriculum.speakerName.split(' / ')[0]}
+                        </h4>
+                        <p className="text-gray-600">
+                          {currentCurriculum.speakerTitle.split(' / ')[0]}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* 두 번째 강사 */}
+                    <div className="flex items-start gap-4">
+                      <div className="relative w-26 h-26 rounded-full overflow-hidden bg-gray-200 flex-shrink-0" style={{ width: '104px', height: '104px' }}>
+                        {currentCurriculum.speakerImage2 === '/speakers/speaker-placeholder.jpg' ? (
+                          <div className="w-full h-full flex items-center justify-center">
+                            <User className="text-gray-400" size={42} />
+                          </div>
+                        ) : (
+                          <Image
+                            src={currentCurriculum.speakerImage2}
+                            alt={currentCurriculum.speakerName.split(' / ')[1]}
+                            fill
+                            className="object-cover"
+                          />
+                        )}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="text-lg font-semibold text-gray-900">
+                          {currentCurriculum.speakerName.split(' / ')[1]}
+                        </h4>
+                        <p className="text-gray-600">
+                          {currentCurriculum.speakerTitle.split(' / ')[1]}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* 장소 정보 */}
+                    <div className="flex items-center gap-2 text-sm text-gray-500 mt-3">
+                      <MapPin size={16} />
+                      <span>{currentCurriculum.location}</span>
+                    </div>
+                  </div>
+                ) : (
+                  /* 1명의 강사인 경우 */
+                  <div className="flex items-start gap-6 mb-8">
+                    <div className="relative rounded-full overflow-hidden bg-gray-200 flex-shrink-0" style={{ width: '125px', height: '125px' }}>
+                      {currentCurriculum.speakerImage === '/speakers/speaker-placeholder.jpg' ? (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <User className="text-gray-400" size={52} />
+                        </div>
+                      ) : (
+                        <Image
+                          src={currentCurriculum.speakerImage}
+                          alt={currentCurriculum.speakerName}
+                          fill
+                          className="object-cover"
+                        />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-gray-900 mb-1">
+                        {currentCurriculum.speakerName}
+                      </h4>
+                      <p className="text-gray-600 mb-3">
+                        {currentCurriculum.speakerTitle}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-gray-500">
+                        <MapPin size={16} />
+                        <span>{currentCurriculum.location}</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Description */}
+                <div className="bg-gray-50 rounded-lg p-6">
+                  <h5 className="font-semibold text-gray-900 mb-3">강의 소개</h5>
+                  <p className="text-gray-700 leading-relaxed">
+                    {currentCurriculum.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
-          ))}
+          </motion.div>
         </div>
 
         {/* Additional Info */}
