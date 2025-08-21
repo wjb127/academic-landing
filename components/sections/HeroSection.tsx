@@ -91,10 +91,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
           >
-            부산 디지털금융
+            부산 디지털금융·블록체인
             <br />
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              블록체인 아카데미
+              아카데미 제1기
             </span>
           </motion.h1>
 
