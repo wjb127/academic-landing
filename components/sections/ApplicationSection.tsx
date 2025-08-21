@@ -1,62 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FileText, Mail, Phone, MapPin, Download, Send, CheckCircle } from 'lucide-react'
-import { useState } from 'react'
+import { FileText, Mail, Phone, MapPin, Download, Clock, CheckCircle } from 'lucide-react'
 
 const ApplicationSection = () => {
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [phone, setPhone] = useState('')
-  const [company, setCompany] = useState('')
-  const [position, setPosition] = useState('')
-  const [message, setMessage] = useState('')
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          name,
-          phone,
-          company,
-          position,
-          message,
-        }),
-      })
-
-      const data = await response.json()
-
-      if (data.success) {
-        setSubmitSuccess(true)
-        // Reset form
-        setEmail('')
-        setName('')
-        setPhone('')
-        setCompany('')
-        setPosition('')
-        setMessage('')
-        
-        // Hide success message after 5 seconds
-        setTimeout(() => setSubmitSuccess(false), 5000)
-      }
-    } catch (error) {
-      console.error('Submit error:', error)
-      alert('문의 접수 중 오류가 발생했습니다. 다시 시도해주세요.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   const handleDownload = () => {
     // 실제 파일 다운로드 로직 (HWP 파일)
     const link = document.createElement('a')
@@ -68,6 +15,21 @@ const ApplicationSection = () => {
   const documents = [
     { icon: FileText, title: '입학원서', description: '소정 양식 작성' },
     { icon: FileText, title: '증명사진', description: '3x4cm 사진 2매' },
+  ]
+
+  const applicationMethods = [
+    { 
+      icon: Mail, 
+      title: '이메일 접수',
+      content: 'jswon@busan.com',
+      description: '작성한 입학원서와 증명사진을 첨부하여 발송'
+    },
+    { 
+      icon: MapPin, 
+      title: '방문·우편 접수',
+      content: '부산일보 전략기획부',
+      description: '부산광역시 연제구 중앙대로 1226'
+    },
   ]
 
   return (
@@ -85,22 +47,24 @@ const ApplicationSection = () => {
             지원 방법
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            아래 방법 중 편한 방법으로 지원해주세요
+            입학원서를 다운로드하여 작성 후 제출해주세요
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Left Column - Application Methods */}
+        <div className="max-w-4xl mx-auto">
+          {/* Step 1: 제출 서류 */}
           <motion.div
+            className="mb-12"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">제출 서류</h3>
-            
-            {/* Required Documents */}
-            <div className="space-y-4 mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">1</span>
+              제출 서류
+            </h3>
+            <div className="grid md:grid-cols-2 gap-4">
               {documents.map((doc, index) => (
                 <motion.div
                   key={doc.title}
@@ -120,185 +84,109 @@ const ApplicationSection = () => {
                 </motion.div>
               ))}
             </div>
-
-            {/* Download Button */}
-            <button
-              onClick={handleDownload}
-              className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all flex items-center justify-center gap-2 mb-8"
-            >
-              <Download size={20} />
-              지금 지원하기
-            </button>
-
-            {/* Contact Information */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
-              <h4 className="font-semibold text-gray-900 mb-4">접수 방법</h4>
-              <div className="space-y-3">
-                <div className="flex items-center gap-3">
-                  <Mail className="text-blue-600" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-600">이메일</p>
-                    <a href="mailto:jswon@busan.com" className="text-blue-600 hover:underline">
-                      jswon@busan.com
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="text-blue-600" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-600">전화</p>
-                    <p className="font-semibold">051-461-4513, 4273</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <MapPin className="text-blue-600" size={20} />
-                  <div>
-                    <p className="text-sm text-gray-600">방문 접수</p>
-                    <p className="text-gray-900">부산일보 전략기획부</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Important Dates */}
-            <div className="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
-              <p className="text-gray-700">
-                <span className="font-semibold">모집 마감:</span> 선착순 50명 
-                <br />
-                <span className="text-sm text-gray-600">조기 마감될 수 있으니 서둘러 지원해주세요</span>
-              </p>
-            </div>
           </motion.div>
 
-          {/* Right Column - Quick Application Form */}
+          {/* Download Button */}
           <motion.div
+            className="mb-12 text-center"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <button
+              onClick={handleDownload}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105"
+            >
+              <Download size={24} />
+              지금 지원하기
+            </button>
+            <p className="text-sm text-gray-500 mt-2">클릭하여 입학원서를 다운로드하세요</p>
+          </motion.div>
+
+          {/* Step 2: 접수 방법 */}
+          <motion.div
+            className="mb-12"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">빠른 문의</h3>
-            
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    성함 *
-                  </label>
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="홍길동"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    연락처 *
-                  </label>
-                  <input
-                    type="tel"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="010-0000-0000"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  이메일 *
-                </label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="example@email.com"
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    소속
-                  </label>
-                  <input
-                    type="text"
-                    value={company}
-                    onChange={(e) => setCompany(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="회사명"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    직책
-                  </label>
-                  <input
-                    type="text"
-                    value={position}
-                    onChange={(e) => setPosition(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="대표이사"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  문의사항
-                </label>
-                <textarea
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="궁금하신 사항을 입력해주세요"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                    전송 중...
-                  </>
-                ) : (
-                  <>
-                    <Send size={20} />
-                    문의하기
-                  </>
-                )}
-              </button>
-
-              {/* Success Message */}
-              {submitSuccess && (
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
+              <span className="bg-blue-600 text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">2</span>
+              접수 방법
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              {applicationMethods.map((method, index) => (
                 <motion.div
-                  className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center gap-3"
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  key={method.title}
+                  className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                 >
-                  <CheckCircle className="text-green-600" size={20} />
-                  <p className="text-green-800">
-                    문의가 성공적으로 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.
-                  </p>
+                  <div className="flex items-start gap-4">
+                    <div className="bg-white p-3 rounded-lg shadow-sm">
+                      <method.icon className="text-blue-600" size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold text-gray-900 mb-2">{method.title}</h4>
+                      <p className="text-blue-600 font-medium mb-1">{method.content}</p>
+                      <p className="text-sm text-gray-600">{method.description}</p>
+                    </div>
+                  </div>
                 </motion.div>
-              )}
-            </form>
+              ))}
+            </div>
+          </motion.div>
 
-            <p className="mt-4 text-sm text-gray-500">
-              * 표시는 필수 입력 항목입니다
-            </p>
+          {/* Contact Information */}
+          <motion.div
+            className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 text-white text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3 className="text-2xl font-bold mb-6">문의처</h3>
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+              <div className="flex items-center gap-3">
+                <Phone className="text-white/80" size={24} />
+                <div className="text-left">
+                  <p className="text-white/80 text-sm">전화</p>
+                  <p className="text-xl font-semibold">051-461-4513, 4273</p>
+                </div>
+              </div>
+              <div className="hidden md:block w-px h-12 bg-white/30" />
+              <div className="flex items-center gap-3">
+                <Mail className="text-white/80" size={24} />
+                <div className="text-left">
+                  <p className="text-white/80 text-sm">이메일</p>
+                  <p className="text-xl font-semibold">jswon@busan.com</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-white/90 mt-6 text-lg">부산일보 전략기획부</p>
+          </motion.div>
+
+          {/* Important Notice */}
+          <motion.div
+            className="mt-8 p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-400"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <div className="flex items-start gap-3">
+              <CheckCircle className="text-yellow-600 flex-shrink-0 mt-1" size={20} />
+              <div>
+                <p className="text-gray-700 font-medium">모집 안내</p>
+                <p className="text-gray-600 text-sm mt-1">
+                  선착순 50명 모집 | 조기 마감될 수 있으니 서둘러 지원해주세요
+                </p>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>
