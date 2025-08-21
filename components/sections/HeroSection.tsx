@@ -103,17 +103,6 @@ const HeroSection = () => {
             </span>
           </motion.h1>
 
-          {/* Description */}
-          <motion.p
-            className="text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            금융중심지 부산의 발전 전략을 모색하는
-            <br />
-            부산국제금융포럼이 2회째를 맞습니다
-          </motion.p>
 
           {/* Key Info Cards */}
           <motion.div

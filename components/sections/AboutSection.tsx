@@ -114,25 +114,6 @@ const AboutSection = () => {
           </motion.div>
         </div>
 
-        {/* Quote Section */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-8 md:p-12 text-white text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <p className="text-xl md:text-2xl font-medium mb-4">
-            "금융중심지 부산의 발전 전략을 모색하는
-            <br />
-            부산국제금융포럼이 2회째를 맞습니다"
-          </p>
-          <p className="text-lg opacity-90">
-            올해는 부산 벤처의 미래, AI 기반 디지털 금융,
-            <br />
-            미중 관세전쟁을 주제로 각 분야 전문가들의 열띤 토론이 펼쳐질 예정입니다
-          </p>
-        </motion.div>
       </div>
     </section>
   )
