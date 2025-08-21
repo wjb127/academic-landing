@@ -35,6 +35,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# hwp files
+# hwp files (except application form)
 *.hwp
-node_modules
+!public/application-form.hwp
