@@ -8,7 +8,7 @@ const HeroSection = () => {
   const handleDownload = async () => {
     // 입학원서 다운로드 로직 (HWP 파일)
     const link = document.createElement('a')
-    link.href = '/application-form.hwp'
+    link.href = '/부산디지털금융블록체인아카데미_입학원서.hwp'
     link.download = '부산디지털금융블록체인아카데미_입학원서.hwp'
     link.click()
   }
