@@ -12,7 +12,7 @@ const nextConfig = {
           },
           {
             key: 'Content-Disposition',
-            value: 'attachment; filename="부산디지털금융블록체인아카데미_입학원서.hwp"',
+            value: 'attachment; filename="부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp"',
           },
         ],
       },
