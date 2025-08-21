@@ -8,6 +8,13 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  const handleDownload = () => {
+    const link = document.createElement('a')
+    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.click()
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20)
@@ -56,7 +63,9 @@ const Navigation = () => {
                   {item.label}
                 </a>
               ))}
-              <button className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all">
+              <button 
+                onClick={handleDownload}
+                className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all">
                 지금 지원하기
               </button>
             </div>
@@ -95,7 +104,9 @@ const Navigation = () => {
                 {item.label}
               </a>
             ))}
-            <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all mt-4">
+            <button 
+              onClick={handleDownload}
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all mt-4">
               지금 지원하기
             </button>
           </div>

@@ -127,7 +127,7 @@ const ApplicationSection = () => {
               className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-lg font-semibold hover:from-green-600 hover:to-green-700 transition-all flex items-center justify-center gap-2 mb-8"
             >
               <Download size={20} />
-              입학원서 다운로드
+              지금 지원하기
             </button>
 
             {/* Contact Information */}

@@ -17,8 +17,13 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900" />
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/hero-background.png')" }}
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/80 via-blue-800/70 to-indigo-900/80" />
         
         {/* Animated blockchain network effect */}
         <div className="absolute inset-0">
@@ -152,7 +157,7 @@ const HeroSection = () => {
               className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2"
             >
               <Download size={20} />
-              입학원서 다운로드
+              지금 지원하기
             </button>
             <a
               href="#about"
