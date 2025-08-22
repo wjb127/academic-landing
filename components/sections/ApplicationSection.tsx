@@ -1,15 +1,17 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FileText, Mail, Phone, MapPin, Download, Clock, CheckCircle } from 'lucide-react'
+import { FileText, Mail, Phone, MapPin, Download, Clock, CheckCircle, Edit3 } from 'lucide-react'
+import ApplicationModal from '../ApplicationModal'
 
 const ApplicationSection = () => {
-  const handleDownload = () => {
-    // 실제 파일 다운로드 로직 (HWP 파일)
-    const link = document.createElement('a')
-    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.click()
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  
+  const handleOnlineApplication = () => {
+    // 부산 디지털금융·블록체인 아카데미 입학원서 템플릿
+    // /copy를 붙여서 사용자의 구글 드라이브에 자동 복사
+    window.open('https://docs.google.com/document/d/1uNLX--bq9q64eNbFXoXrAOGksd_ngQXUvfw0kbF7mLE/copy', '_blank')
   }
 
   const documents = [
@@ -86,22 +88,64 @@ const ApplicationSection = () => {
             </div>
           </motion.div>
 
-          {/* Download Button */}
+          {/* Application Options */}
           <motion.div
-            className="mb-12 text-center"
+            className="mb-12"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <button
-              onClick={handleDownload}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 shadow-lg"
-            >
-              <Download size={20} />
-              지금 지원하기
-            </button>
-            <p className="text-xs sm:text-sm text-gray-500 mt-2">클릭하여 입학원서를 다운로드하세요</p>
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 sm:p-8">
+              <h4 className="text-lg font-semibold text-gray-900 mb-6 text-center">지원 방법 선택</h4>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {/* Online Application */}
+                <button
+                  onClick={handleOnlineApplication}
+                  className="group bg-white hover:bg-green-50 rounded-lg p-4 sm:p-5 text-left transition-all duration-200 border-2 border-green-400 hover:border-green-500 shadow-sm hover:shadow-lg"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="bg-gradient-to-r from-green-500 to-emerald-600 p-2 rounded-lg text-white">
+                      <Edit3 size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="font-semibold text-gray-900 mb-1">
+                        온라인 지원서 작성
+                      </h5>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        Google Docs에서 양식 복사 후 작성
+                      </p>
+                      <p className="text-xs text-green-600 mt-1 font-medium">
+                        ✓ 자동 저장 · 편리한 편집
+                      </p>
+                    </div>
+                  </div>
+                </button>
+                
+                {/* Download Application */}
+                <button
+                  onClick={() => setIsModalOpen(true)}
+                  className="group bg-white hover:bg-blue-50 rounded-lg p-4 sm:p-5 text-left transition-all duration-200 border-2 border-blue-400 hover:border-blue-500 shadow-sm hover:shadow-lg"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-2 rounded-lg text-white">
+                      <Download size={20} />
+                    </div>
+                    <div className="flex-1">
+                      <h5 className="font-semibold text-gray-900 mb-1">
+                        입학원서 다운로드
+                      </h5>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        HWP 파일 다운로드 후 작성
+                      </p>
+                      <p className="text-xs text-blue-600 mt-1 font-medium">
+                        ✓ 이메일/우편 제출
+                      </p>
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
           </motion.div>
 
           {/* Step 2: 접수 방법 */}
@@ -190,6 +234,9 @@ const ApplicationSection = () => {
           </motion.div>
         </div>
       </div>
+      
+      {/* Application Modal */}
+      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

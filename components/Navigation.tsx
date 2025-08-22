@@ -3,17 +3,12 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import ApplicationModal from './ApplicationModal'
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const handleDownload = () => {
-    const link = document.createElement('a')
-    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.click()
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +60,7 @@ const Navigation = () => {
                 </a>
               ))}
               <button 
-                onClick={handleDownload}
+                onClick={() => setIsModalOpen(true)}
                 className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-full font-medium hover:from-blue-700 hover:to-blue-800 transition-all">
                 지금 지원하기
               </button>
@@ -89,7 +84,7 @@ const Navigation = () => {
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <motion.div
-          className="md:hidden bg-white/98 backdrop-blur-lg shadow-xl border-t border-gray-100"
+          className="md:hidden bg-gradient-to-br from-blue-600 to-indigo-700 shadow-xl"
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
@@ -100,25 +95,28 @@ const Navigation = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                className="block px-4 py-3 text-base font-medium text-white hover:bg-white/10 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <div className="pt-4 border-t border-gray-200">
+            <div className="pt-4 border-t border-white/20">
               <button 
                 onClick={() => {
-                  handleDownload();
+                  setIsModalOpen(true);
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg">
+                className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-lg font-medium hover:from-green-600 hover:to-green-700 transition-all shadow-lg">
                 지금 지원하기
               </button>
             </div>
           </div>
         </motion.div>
       )}
+      
+      {/* Application Modal */}
+      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </motion.nav>
   )
 }

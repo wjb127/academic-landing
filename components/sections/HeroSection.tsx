@@ -1,17 +1,13 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Download, Calendar, Users, MapPin } from 'lucide-react'
 import Image from 'next/image'
+import ApplicationModal from '../ApplicationModal'
 
 const HeroSection = () => {
-  const handleDownload = async () => {
-    // 입학원서 다운로드 로직 (HWP 파일)
-    const link = document.createElement('a')
-    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.click()
-  }
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -143,7 +139,7 @@ const HeroSection = () => {
             transition={{ delay: 0.8 }}
           >
             <button
-              onClick={handleDownload}
+              onClick={() => setIsModalOpen(true)}
               className="group bg-gradient-to-r from-green-500 to-green-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:from-green-600 hover:to-green-700 transition-all transform hover:scale-105 flex items-center justify-center gap-2 shadow-xl"
             >
               <Download size={18} />
@@ -158,6 +154,9 @@ const HeroSection = () => {
           </motion.div>
         </motion.div>
       </div>
+      
+      {/* Application Modal */}
+      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }
