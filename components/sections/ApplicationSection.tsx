@@ -1,17 +1,21 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FileText, Mail, Phone, MapPin, Download, Clock, CheckCircle, Edit3 } from 'lucide-react'
-import ApplicationModal from '../ApplicationModal'
 
 const ApplicationSection = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  
   const handleOnlineApplication = () => {
     // 부산 디지털금융·블록체인 아카데미 입학원서 템플릿
     // /copy를 붙여서 사용자의 구글 드라이브에 자동 복사
     window.open('https://docs.google.com/document/d/1uNLX--bq9q64eNbFXoXrAOGksd_ngQXUvfw0kbF7mLE/copy', '_blank')
+  }
+  
+  const handleDownload = () => {
+    // HWP 파일 직접 다운로드
+    const link = document.createElement('a')
+    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.click()
   }
 
   const documents = [
@@ -124,7 +128,7 @@ const ApplicationSection = () => {
                 
                 {/* Download Application */}
                 <button
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={handleDownload}
                   className="group bg-white hover:bg-blue-50 rounded-lg p-4 sm:p-5 text-left transition-all duration-200 border-2 border-blue-400 hover:border-blue-500 shadow-sm hover:shadow-lg"
                 >
                   <div className="flex items-start gap-3">
@@ -234,9 +238,6 @@ const ApplicationSection = () => {
           </motion.div>
         </div>
       </div>
-      
-      {/* Application Modal */}
-      <ApplicationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }
