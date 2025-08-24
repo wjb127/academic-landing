@@ -117,7 +117,7 @@ const ApplicationSection = () => {
                         온라인 지원서 작성
                       </h5>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        양식 작성 후 제출
+                        Google Docs에서 양식 작성 후 제출
                       </p>
                     </div>
                   </div>
@@ -137,10 +137,13 @@ const ApplicationSection = () => {
                         입학원서 다운로드
                       </h5>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        HWP 파일 다운로드 후 작성
+                        HWP 파일 작성 후 제출
                       </p>
                       <p className="text-xs text-blue-600 mt-1 font-medium">
-                        ✓ 이메일/우편 제출
+                        이메일 접수 : jswon@busan.com
+                      </p>
+                      <p className="text-xs text-blue-600 font-medium">
+                        방문 우편 접수 : 부산광역시 동구 중앙대로 365, 부산일보 전략기획부(5층)
                       </p>
                     </div>
                   </div>
@@ -149,42 +152,6 @@ const ApplicationSection = () => {
             </div>
           </motion.div>
 
-          {/* Step 2: 접수 방법 */}
-          <motion.div
-            className="mb-12"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-              <span className="bg-blue-600 text-white w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs sm:text-sm">2</span>
-              접수 방법
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              {applicationMethods.map((method, index) => (
-                <motion.div
-                  key={method.title}
-                  className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 sm:p-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className="flex items-start gap-3 sm:gap-4">
-                    <div className="bg-white p-2 sm:p-3 rounded-lg shadow-sm">
-                      <method.icon className="text-blue-600" size={20} />
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold text-gray-900 mb-1 sm:mb-2 text-sm sm:text-base">{method.title}</h4>
-                      <p className="text-blue-600 font-medium mb-1 text-sm sm:text-base">{method.content}</p>
-                      <p className="text-xs sm:text-sm text-gray-600">{method.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
 
           {/* Contact Information */}
           <motion.div
