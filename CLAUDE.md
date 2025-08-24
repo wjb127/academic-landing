@@ -79,3 +79,4 @@ Note: Currently using placeholder values. Real Supabase credentials needed for f
    - Schedule: Every Tuesday 18:00-21:00
    - Capacity: ~50 participants
    - Tuition: 5.5 million KRW
+- 피드백_반영_내역.md

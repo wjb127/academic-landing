@@ -81,8 +81,6 @@ const HeroSection = () => {
             transition={{ delay: 0.2 }}
           >
             <span className="text-green-400 font-semibold text-sm sm:text-base">제1기 원우 모집</span>
-            <span className="hidden sm:inline text-white">|</span>
-            <span className="text-white text-xs sm:text-base">부산일보 · 비온미디어 · 쟁글 공동주관</span>
           </motion.div>
 
           {/* Main Title */}
@@ -112,7 +110,7 @@ const HeroSection = () => {
               <Calendar className="text-green-400 flex-shrink-0" size={20} />
               <div className="text-left">
                 <p className="text-white/70 text-xs sm:text-sm">교육기간</p>
-                <p className="text-white font-semibold text-sm sm:text-base">9.16 - 12.9</p>
+                <p className="text-white font-semibold text-sm sm:text-base">9.16 - 12.9 (3개월)</p>
               </div>
             </div>
             <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 sm:p-4 flex items-center gap-3">
@@ -126,7 +124,7 @@ const HeroSection = () => {
               <MapPin className="text-yellow-400 flex-shrink-0" size={20} />
               <div className="text-left">
                 <p className="text-white/70 text-xs sm:text-sm">교육장소</p>
-                <p className="text-white font-semibold text-sm sm:text-base">부산 힐튼호텔 5층</p>
+                <p className="text-white font-semibold text-sm sm:text-base">웨스틴 조선호텔 부산</p>
               </div>
             </div>
           </motion.div>

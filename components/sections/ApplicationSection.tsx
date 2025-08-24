@@ -19,7 +19,7 @@ const ApplicationSection = () => {
   }
 
   const documents = [
-    { icon: FileText, title: '증명사진', description: '원서 부분 혹은 사진파일로 첨부' },
+    { icon: FileText, title: '증명사진', description: '(원서 부착 혹은 사진파일로 첨부)' },
   ]
 
   const applicationMethods = [

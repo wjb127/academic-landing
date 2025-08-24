@@ -106,9 +106,14 @@ const AboutSection = () => {
               ))}
             </div>
             <div className="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
-              <p className="text-gray-700">
-                <span className="font-semibold">특별 혜택:</span> VIP 네트워킹 만찬 | 매 강의 후 실전 토론 및 글로벌 연사와의 교류 | 참가자 중심의 비즈니스 매칭 기회
-              </p>
+              <div className="text-gray-700">
+                <p className="font-semibold mb-2">특별 혜택:</p>
+                <ul className="space-y-1 ml-4">
+                  <li>• VIP 네트워킹 만찬</li>
+                  <li>• 매 강의 후 실전 토론 및 글로벌 연사와의 교류</li>
+                  <li>• 참가자 중심의 비즈니스 매칭 기회</li>
+                </ul>
+              </div>
             </div>
           </motion.div>
         </div>

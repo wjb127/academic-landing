@@ -21,7 +21,6 @@ const Navigation = () => {
   const navItems = [
     { label: '아카데미 소개', href: '#about' },
     { label: '커리큘럼', href: '#curriculum' },
-    { label: '특별 혜택', href: '#features' },
     { label: '지원 방법', href: '#application' },
   ]
 

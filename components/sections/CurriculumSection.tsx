@@ -85,7 +85,7 @@ const CurriculumSection = () => {
     {
       week: '8주차',
       date: '11/11',
-      speakerName: '차란차 본부장',
+      speakerName: '권혁민 부회장',
       speakerTitle: '도이치모터스그룹',
       speakerImage: '/speakers/speaker-8.jpg',
       title: 'Web3와 AI를 활용한 모빌리티테크 사업확장',
@@ -252,7 +252,7 @@ const CurriculumSection = () => {
                       {currentCurriculum.date}
                     </span>
                   </div>
-                  {currentCurriculum.isOrientation && (
+                  {currentCurriculum.isOrientation && currentCurriculum.speakerName.includes('심준식') && (
                     <span className="bg-yellow-400 text-gray-900 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                       오리엔테이션
                     </span>
