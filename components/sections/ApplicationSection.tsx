@@ -19,6 +19,7 @@ const ApplicationSection = () => {
   }
 
   const documents = [
+    { icon: FileText, title: '입학원서', description: '' },
     { icon: FileText, title: '증명사진', description: '(원서 부착 혹은 사진파일로 첨부)' },
   ]
 
@@ -26,7 +27,7 @@ const ApplicationSection = () => {
     { 
       icon: Mail, 
       title: '이메일 접수',
-      content: 'jswon@busan.com',
+      content: 'dudduddud95@naver.com',
       description: '작성 후 저장'
     },
     { 
@@ -116,10 +117,7 @@ const ApplicationSection = () => {
                         온라인 지원서 작성
                       </h5>
                       <p className="text-xs sm:text-sm text-gray-600">
-                        Google Docs에서 양식 복사 후 작성
-                      </p>
-                      <p className="text-xs text-green-600 mt-1 font-medium">
-                        ✓ 자동 저장 · 편리한 편집
+                        양식 작성 후 제출
                       </p>
                     </div>
                   </div>
@@ -210,7 +208,7 @@ const ApplicationSection = () => {
                 <Mail className="text-white/80 flex-shrink-0" size={20} />
                 <div className="text-left">
                   <p className="text-white/80 text-xs sm:text-sm">이메일</p>
-                  <p className="text-base sm:text-lg md:text-xl font-semibold">jswon@busan.com</p>
+                  <p className="text-base sm:text-lg md:text-xl font-semibold">dudduddud95@naver.com</p>
                 </div>
               </div>
             </div>

@@ -79,7 +79,7 @@ const ApplicationModal = ({ isOpen, onClose }: ApplicationModalProps) => {
                         온라인 지원서 작성
                       </h4>
                       <p className="text-sm text-gray-600">
-                        Google Docs에서 양식 복사 후 작성
+                        양식 작성 후 제출
                       </p>
                       <p className="text-xs text-green-600 mt-2 font-medium">
                         추천 ✓ 자동 저장 · 편리한 작성
