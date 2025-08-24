@@ -42,13 +42,13 @@ const AboutSection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
-            <div className="text-lg sm:text-xl md:text-2xl font-bold text-blue-600">부산일보</div>
+            <Image src="/logos/busan-ilbo.png" alt="부산일보" width={120} height={60} className="h-12 sm:h-14 md:h-16 w-auto object-contain" />
           </div>
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
-            <div className="text-lg sm:text-xl md:text-2xl font-bold text-green-600">비온미디어</div>
+            <Image src="/logos/beon-media.png" alt="비온미디어" width={120} height={60} className="h-12 sm:h-14 md:h-16 w-auto object-contain" />
           </div>
           <div className="bg-white rounded-lg shadow-lg p-4 sm:p-5 md:p-6">
-            <div className="text-lg sm:text-xl md:text-2xl font-bold text-purple-600">쟁글</div>
+            <Image src="/logos/xangle.png" alt="쟁글" width={120} height={60} className="h-12 sm:h-14 md:h-16 w-auto object-contain" />
           </div>
         </motion.div>
 
@@ -107,8 +107,7 @@ const AboutSection = () => {
             </div>
             <div className="mt-6 p-4 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
               <p className="text-gray-700">
-                <span className="font-semibold">특별 혜택:</span> 수료 후 원우회 가입 및 
-                지속적인 네트워킹 기회 제공
+                <span className="font-semibold">특별 혜택:</span> VIP 네트워킹 만찬 | 매 강의 후 실전 토론 및 글로벌 연사와의 교류 | 참가자 중심의 비즈니스 매칭 기회
               </p>
             </div>
           </motion.div>

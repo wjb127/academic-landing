@@ -80,7 +80,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <span className="text-green-400 font-semibold text-sm sm:text-base">2025년 제1기 모집</span>
+            <span className="text-green-400 font-semibold text-sm sm:text-base">제1기 원우 모집</span>
             <span className="hidden sm:inline text-white">|</span>
             <span className="text-white text-xs sm:text-base">부산일보 · 비온미디어 · 쟁글 공동주관</span>
           </motion.div>
@@ -126,7 +126,7 @@ const HeroSection = () => {
               <MapPin className="text-yellow-400 flex-shrink-0" size={20} />
               <div className="text-left">
                 <p className="text-white/70 text-xs sm:text-sm">교육장소</p>
-                <p className="text-white font-semibold text-sm sm:text-base">부산 그랜드볼룸</p>
+                <p className="text-white font-semibold text-sm sm:text-base">부산 힐튼호텔 5층</p>
               </div>
             </div>
           </motion.div>

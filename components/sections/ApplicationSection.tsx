@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { FileText, Mail, Phone, MapPin, Download, Clock, CheckCircle, Edit3 } from 'lucide-react'
+import { FileText, Mail, Phone, MapPin, Download, Edit3 } from 'lucide-react'
 
 const ApplicationSection = () => {
   const handleOnlineApplication = () => {
@@ -13,14 +13,13 @@ const ApplicationSection = () => {
   const handleDownload = () => {
     // HWP 파일 직접 다운로드
     const link = document.createElement('a')
-    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.href = '/부산+디지털금융·블록체인+아카데미+안내문+및+입학원서.hwp'
+    link.download = '부산 디지털금융·블록체인 아카데미 안내문 및 입학원서.hwp'
     link.click()
   }
 
   const documents = [
-    { icon: FileText, title: '입학원서', description: '소정 양식 작성' },
-    { icon: FileText, title: '증명사진', description: '3x4cm 사진 2매' },
+    { icon: FileText, title: '증명사진', description: '원서 부분 혹은 사진파일로 첨부' },
   ]
 
   const applicationMethods = [
@@ -28,13 +27,13 @@ const ApplicationSection = () => {
       icon: Mail, 
       title: '이메일 접수',
       content: 'jswon@busan.com',
-      description: '작성한 입학원서와 증명사진을 첨부하여 발송'
+      description: '작성 후 저장'
     },
     { 
       icon: MapPin, 
       title: '방문·우편 접수',
-      content: '부산일보 전략기획부',
-      description: '부산광역시 연제구 중앙대로 1226'
+      content: '부산광역시 동구 중앙대로 365, 부산일보 전략기획부(5층)',
+      description: ''
     },
   ]
 
@@ -203,7 +202,7 @@ const ApplicationSection = () => {
                 <Phone className="text-white/80 flex-shrink-0" size={20} />
                 <div className="text-left">
                   <p className="text-white/80 text-xs sm:text-sm">전화</p>
-                  <p className="text-base sm:text-lg md:text-xl font-semibold">051-461-4513, 4273</p>
+                  <p className="text-base sm:text-lg md:text-xl font-semibold">051-461-4513</p>
                 </div>
               </div>
               <div className="hidden sm:block w-px h-10 sm:h-12 bg-white/30" />
@@ -216,25 +215,6 @@ const ApplicationSection = () => {
               </div>
             </div>
             <p className="text-white/90 mt-4 sm:mt-6 text-base sm:text-lg">부산일보 전략기획부</p>
-          </motion.div>
-
-          {/* Important Notice */}
-          <motion.div
-            className="mt-8 p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-400"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="flex items-start gap-3">
-              <CheckCircle className="text-yellow-600 flex-shrink-0 mt-1" size={20} />
-              <div>
-                <p className="text-gray-700 font-medium">모집 안내</p>
-                <p className="text-gray-600 text-sm mt-1">
-                  선착순 50명 모집 | 조기 마감될 수 있으니 서둘러 지원해주세요
-                </p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

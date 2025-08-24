@@ -86,7 +86,7 @@ const CurriculumSection = () => {
       week: '8주차',
       date: '11/11',
       speakerName: '차란차 본부장',
-      speakerTitle: '도이치모터스',
+      speakerTitle: '도이치모터스그룹',
       speakerImage: '/speakers/speaker-8.jpg',
       title: 'Web3와 AI를 활용한 모빌리티테크 사업확장',
       location: '오키드룸',

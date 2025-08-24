@@ -11,8 +11,8 @@ interface ApplicationModalProps {
 const ApplicationModal = ({ isOpen, onClose }: ApplicationModalProps) => {
   const handleDownload = () => {
     const link = document.createElement('a')
-    link.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    link.href = '/부산+디지털금융·블록체인+아카데미+안내문+및+입학원서.hwp'
+    link.download = '부산 디지털금융·블록체인 아카데미 안내문 및 입학원서.hwp'
     link.click()
     onClose()
   }
