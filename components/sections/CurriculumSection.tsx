@@ -252,11 +252,6 @@ const CurriculumSection = () => {
                       {currentCurriculum.date}
                     </span>
                   </div>
-                  {currentCurriculum.isOrientation && currentCurriculum.speakerName.includes('심준식') && (
-                    <span className="bg-yellow-400 text-gray-900 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
-                      오리엔테이션
-                    </span>
-                  )}
                 </div>
                 <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
                   {currentCurriculum.title}
@@ -287,8 +282,13 @@ const CurriculumSection = () => {
                         )}
                       </div>
                       <div className="flex-1">
-                        <h4 className="text-lg font-semibold text-gray-900">
+                        <h4 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
                           {currentCurriculum.speakerName.split(' / ')[0]}
+                          {currentCurriculum.isOrientation && currentCurriculum.speakerName.includes('심준식') && (
+                            <span className="bg-yellow-400 text-gray-900 px-2 py-1 rounded-full text-xs font-medium">
+                              오리엔테이션
+                            </span>
+                          )}
                         </h4>
                         <p className="text-gray-600">
                           {currentCurriculum.speakerTitle.split(' / ')[0]}
