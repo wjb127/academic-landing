@@ -11,14 +11,19 @@ const ApplicationSection = () => {
   }
   
   const handleDownload = () => {
-    // HWP 파일 직접 다운로드
-    const link = document.createElement('a')
-    link.href = '/application-form.hwp'
-    link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
-    link.style.display = 'none'
-    document.body.appendChild(link)
-    link.click()
-    setTimeout(() => document.body.removeChild(link), 100)
+    console.log('Download button clicked!')
+    // HWP 파일 직접 다운로드 - 방법 1: window.location 사용
+    window.location.href = '/application-form.hwp'
+    
+    // 백업 방법 - 위 방법이 안 되면 이것으로 시도
+    // const link = document.createElement('a')
+    // link.href = '/application-form.hwp'
+    // link.download = '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
+    // link.setAttribute('download', '부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp')
+    // link.style.display = 'none'
+    // document.body.appendChild(link)
+    // link.click()
+    // setTimeout(() => document.body.removeChild(link), 100)
   }
 
   const documents = [
