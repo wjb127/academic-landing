@@ -372,42 +372,6 @@ const CurriculumSection = () => {
           </motion.div>
         </div>
 
-        {/* Additional Info */}
-        <motion.div
-          className="mt-12 grid md:grid-cols-3 gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg p-6 text-center">
-            <Calendar className="mx-auto text-blue-600 mb-3" size={32} />
-            <h4 className="font-semibold text-gray-900 mb-1">교육 기간</h4>
-            <p className="text-sm text-gray-600">2025년 9월 16일 ~ 12월 9일</p>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg p-6 text-center">
-            <Clock className="mx-auto text-green-600 mb-3" size={32} />
-            <h4 className="font-semibold text-gray-900 mb-1">교육 시간</h4>
-            <p className="text-sm text-gray-600">매주 화요일 18:00 - 21:00</p>
-          </div>
-          <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-lg p-6 text-center">
-            <BookOpen className="mx-auto text-yellow-600 mb-3" size={32} />
-            <h4 className="font-semibold text-gray-900 mb-1">특별 혜택</h4>
-            <p className="text-sm text-gray-600">매 강의 후 VIP 네트워킹 만찬</p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="mt-8 p-4 bg-blue-50 rounded-lg text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <p className="text-sm text-gray-700">
-            <span className="font-semibold">※ 상기 교육과정 일정 및 장소는 변경 될 수 있습니다</span>
-          </p>
-        </motion.div>
       </div>
     </section>
   )

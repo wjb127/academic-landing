@@ -110,7 +110,7 @@ const AboutSection = () => {
                 <p className="font-semibold mb-2">특별 혜택:</p>
                 <ul className="space-y-1 ml-4">
                   <li>• VIP 네트워킹 만찬</li>
-                  <li>• 매 강의 후 실전 토론 및 글로벌 연사와의 교류</li>
+                  <li>• 실전 토론 및 글로벌 연사와의 교류</li>
                   <li>• 참가자 중심의 비즈니스 매칭 기회</li>
                 </ul>
               </div>
