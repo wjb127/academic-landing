@@ -11,7 +11,7 @@ interface ApplicationModalProps {
 const ApplicationModal = ({ isOpen, onClose }: ApplicationModalProps) => {
   const handleDownload = () => {
     // HWP 파일 직접 다운로드 - window.location 사용
-    window.location.href = '/application-form.hwp'
+    window.location.href = '/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp'
     onClose()
   }
 

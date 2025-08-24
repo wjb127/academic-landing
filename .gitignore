@@ -37,4 +37,4 @@ next-env.d.ts
 
 # hwp files (except application form)
 *.hwp
-!public/application-form.hwp
+!public/부산 디지털금융블록체인 아카데미 안내문 및 입학원서.hwp
